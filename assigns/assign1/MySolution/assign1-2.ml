@@ -1,7 +1,7 @@
-#use "CS320-2023-Fall-DanielChen/classlib/OCaml/MyOCaml.ml";;
-
+#use "/home/snow/320/CS320-2023-Fall/CS320-2023-Fall-DanielChen/classlib/OCaml/MyOCaml.ml";;
+(*
 let check a b: bool =
-  a>b
+  a<b
 ;;
 
 let solve cs1 cs2: string = 
@@ -11,9 +11,19 @@ let solve cs1 cs2: string =
     (fun a -> string_foreach cs2
     (fun b -> if check a b then work a else work b)))
 ;;
-
+*)
 let string_merge(cs1: string)(cs2: string): string =
-  solve cs1 cs2
+  let len = string_length(cs1) + string_length(cs2)
+  let rec index(i)(j)(k)(work): unit =
+    if i<string_length cs1 && j<string_length cs2
+      then if string_head(cs1) < string_head(cs2)
+        then (work(string_get_at(len)(k); index(i+1)(j)(k+1)(work)))
+      else
+        (work(string.get.at(len)(k); index(i)(j+1)(k+1)(work)))
+    else if i<string_length cs1 then (work(string_get_at(len)(k); index(i+1)(j)(k+1)(work)))
+    else if j<string_length cs2 then (work(string_get_at(len)(k); index(i)(j+1)(k+1)(work)))
+    else ()
+  in string_make_fwork index 0 0 0
 ;;
 
 (*
