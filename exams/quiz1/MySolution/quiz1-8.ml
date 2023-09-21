@@ -20,5 +20,4 @@ let sort5: int*int*int*int*int -> int*int*int*int*int =
   let a = fun i ->if (i) > (i + 1) then ((i+1), i)
     fun x -> if x <= 5 then a
 
-
 (* ************************************************ *)
